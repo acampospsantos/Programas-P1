@@ -1,0 +1,65 @@
+package javaapplication17;
+
+import java.util.Scanner;
+
+public class JavaApplication17 {
+
+    public static double CalculoDelta(double a, double b, double c) {
+        double delta;
+        delta = Math.pow(b, 2) - (4 * a * c);
+        return delta;
+    }
+
+    public static void CalculoRaizes(double delta, double a, double b, double c) {
+        double x1, x2;
+        if (delta < 0) {
+            System.out.println("x NÃO possui raizes reais!");
+
+        } else if (delta == 0) {
+            x1 = (-b) / (2 * a);
+            System.out.println("x possui apenas uma raiz real!");
+            System.out.println("x1 = " + x1);
+            System.out.println("x2 = " + x1);
+
+        } else { //delta > 0
+            x1 = ((-b) + Math.sqrt(delta)) / (2 * a);
+            x2 = ((-b) - Math.sqrt(delta)) / (2 * a);
+            System.out.println("x possui duas raizes reais:");
+            System.out.println("x1 = " + x1);
+            System.out.println("x2 = " + x2);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        double a, b, c;
+        double delta, raízes, x1, x2;
+
+        System.out.println("Digite o valor do coeficiente quadrático (a)");
+        a = entrada.nextDouble();
+        while (a == 0) {
+            System.out.println("O Valor do coeficiente é inválido!!");
+            System.out.println("Digite o valor do Coeficiente Quadrático novamente");
+            a = entrada.nextDouble();
+        }
+        System.out.println("");
+
+        System.out.println("Digite o valor do coeficiente b");
+        b = entrada.nextDouble();
+        System.out.println("");
+
+        System.out.println("Digite o valor do coeficiente c");
+        c = entrada.nextDouble();
+        System.out.println("");
+
+        //FÓRMULA: a*x^2 + b*x + c
+        System.out.println("Fórmula Geral: " + a + "x² + " + b + "x + " + c + " = 0");
+        System.out.println("");
+
+        //FÓRMULA P/ ACHAR RAÍZ(ES): (-b+-(raizΔ))/2*a
+        delta = CalculoDelta(a, b, c);
+        System.out.println("Δ = " + delta);
+
+        CalculoRaizes(delta, a, b, c);
+    }
+}

@@ -1,0 +1,96 @@
+package javaapplication26;
+
+import java.util.Scanner;
+
+public class JavaApplication26 {
+
+    public static void Finais(int golBr, int golJap, int golFra, int golUru) {
+        int vencedor, winner;
+        vencedor = Placares(golBr, golJap);
+        if (vencedor == 1) {
+            System.out.println("O Brasil está na Final!!");
+            System.out.println("O Japão irá disputar o 3º Lugar!");
+        } else {
+            System.out.println("O Japão está na final!!");
+            System.out.println("O Brasil irá disputar o 3º Lugar!");
+        }
+        System.out.println("");
+
+        winner = Placares(golFra, golUru);
+        if (winner == 1) {
+            System.out.println("A França está na final!!");
+            System.out.println("O Uruguai irá disputar o 3ºLugar!");
+        } else {
+            System.out.println("O Uruguai está na final!");
+            System.out.println("A França irá disputar o 3ºLugar!");
+        }
+    }
+
+    public static int Placares(int gol1, int gol2) {
+        int winner;
+        if (gol1 > gol2) {
+            winner = 1;
+        } else {
+            winner = 2;
+        }
+        return winner;
+    }
+
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        int golBr, golFra, golUru, golJap;
+
+        System.out.println("Semifinais da Copa!!\n");
+
+        System.out.println("1ºJogo das Semifinais: Brasil x Japão");
+        System.out.println("Digite quantos gols o Brasil e Japão marcaram, respectivamente:");
+        golBr = entrada.nextInt();
+        while (golBr < 0) {
+            System.out.println("Digite o número de gols marcados pelo Brasil novamente!");
+            golBr = entrada.nextInt();
+        }
+        golJap = entrada.nextInt();
+        while (golJap < 0) {
+            System.out.println("Digite o número de gols marcados pelo Japão novamente!");
+            golJap = entrada.nextInt();
+        }
+        while (golBr == golJap) {
+            System.out.println("Placar não possível!");
+            golBr = entrada.nextInt();
+            golJap = entrada.nextInt();
+            while (golBr < 0 || golJap < 0) {
+                System.out.println("Tá zuando é fdp?? DIGITE MAIOR Q 0, SEU ANIMAL!!");
+                golBr = entrada.nextInt();
+                golJap = entrada.nextInt();
+            }
+        }
+        System.out.println("Placar do jogo: Brasil " + golBr + "x" + golJap + " Japão");
+
+        System.out.println("2ºJogo das Semifinais: França x Uruguai");
+        System.out.println("Digite quantos gols a França e  Uruguai marcaram, respectivamente:");
+        golFra = entrada.nextInt();
+        while (golFra < 0) {
+            System.out.println("Digite o número de gols marcados pela França novamente!");
+            golFra = entrada.nextInt();
+        }
+        golUru = entrada.nextInt();
+        while (golUru < 0) {
+            System.out.println("Digite o número de gols marcados pelo Uruguai novamente!");
+            golUru = entrada.nextInt();
+        }
+        while (golFra == golUru) {
+            System.out.println("Placar não possível!");
+            golFra = entrada.nextInt();
+            golUru = entrada.nextInt();
+            while (golFra < 0 || golUru < 0) {
+                System.out.println("Tá zuando é fdp?? DIGITE MAIOR Q 0, SEU ANIMAL!!");
+                golFra = entrada.nextInt();
+                golUru = entrada.nextInt();
+            }
+        }
+        System.out.println("Placar do jogo: França " + golFra + "x" + golUru + " Uruguai");
+        System.out.println("");
+
+        Finais(golBr, golJap, golFra, golUru);
+    }
+}
